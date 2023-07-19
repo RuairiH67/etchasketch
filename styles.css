@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .grid-container {
+    display: grid;
+    width: 960px; /* Adjust this value as needed to control the size of the grid */
+    gap: 1px; /* Add a small gap between grid items */
+  }
+  
+  /* Adjust the size of the grid items */
+  .grid-item {
+    width: calc(960px / 16 - 1px); /* Each grid item is now 1/16th of the container width minus 1px for the gap */
+    height: calc(960px / 16 - 1px); /* Each grid item is now 1/16th of the container height minus 1px for the gap */
+    border: 1px solid #000;
+  }
+  
+  /* CSS for hover effect */
+  .grid-item.hovered {
+    background-color: #000; /* Change the background color to black when hovered */
+  }

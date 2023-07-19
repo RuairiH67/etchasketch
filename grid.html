@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16x16 Grid of Square Divs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="resetButton">Reset Grid</button> <!-- Add the reset button -->
+  <div class="grid-container" id="gridContainer">
+    <!-- The grid items will be dynamically added using JavaScript -->
+  </div>
+
+  <script>
+    const container = document.getElementById('gridContainer');
+
+    // Function to create the grid
+    function createGrid(size) {
+      container.innerHTML = ''; // Clear the existing grid
+      container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+      // Create new grid squares
+      for (let i = 0; i < size * size; i++) {
+        const gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+        container.appendChild(gridItem);
+      }
+
+      // Add hover effect using JavaScript
+      const gridItems = document.querySelectorAll('.grid-item');
+
+      gridItems.forEach((item) => {
+        item.addEventListener('mouseenter', () => {
+          item.classList.add('hovered');
+        });
+
+        item.addEventListener('mouseleave', () => {
+          item.classList.remove('hovered');
+        });
+      });
+    }
+
+    // Initial grid creation
+    createGrid(16);
+
+    // Function to handle the button click event
+    const resetButton = document.getElementById('resetButton');
+    resetButton.addEventListener('click', () => {
+      let sizeInput = prompt('Enter the number of squares per side (up to 100):', '16');
+      sizeInput = parseInt(sizeInput);
+
+      if (isNaN(sizeInput) || sizeInput <= 0 || sizeInput > 100) {
+        alert('Invalid input. Please enter a number between 1 and 100.');
+      } else {
+        createGrid(sizeInput);
+      }
+    });
+  </script>
+</body>
+</html>
